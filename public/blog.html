@@ -6,35 +6,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nexus Blog</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body>
+<body class="bg-light">
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
-        <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm border-bottom">
+        <div class="container-fluid px-4">
             <a class="navbar-brand" href="index.html">Nexus</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="blog.html">Blog</a></li>
-                    <li class="nav-item"><a class="nav-link" href="chat.html">Chat</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html"><i class="fas fa-home me-1"></i> Home</a>
+                    </li>
+
+                    <li class="nav-item"><a class="nav-link active" href="blog.html"><i class="fas fa-blog me-1"></i>
+                            Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="chat.html"><i class="fas fa-comments me-1"></i>
+                            Chat</a></li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
-                            <span id="navUsername">User</span>
+                            <i class="fas fa-user-circle me-1"></i> <span id="navUsername">User</span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="profile.html">Profile</a></li>
+                            <li><a class="dropdown-item" href="profile.html"><i class="fas fa-id-card me-2"></i>
+                                    Profile</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item text-danger" href="#" onclick="logout()">Logout</a></li>
+                            <li><a class="dropdown-item text-danger" href="#" onclick="logout()"><i
+                                        class="fas fa-sign-out-alt me-2"></i> Logout</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -42,44 +48,131 @@
         </div>
     </nav>
 
-    <div class="container py-4">
-        <!-- Create Post Section -->
-        <div class="row justify-content-center mb-5">
-            <div class="col-md-8">
-                <div class="card border-top-violet">
-                    <div class="card-body">
-                        <h4 class="card-title mb-3">Create a Post</h4>
+    <div class="container py-5">
+        <div class="row g-5">
+            <!-- Main Content Column -->
+            <div class="col-lg-8">
+
+                <!-- Create Post Card -->
+                <div class="card border-0 shadow-sm rounded-4 mb-5 bg-white">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="avatar-placeholder me-3" style="width: 48px; height: 48px; font-size: 20px;">
+                                <i class="fas fa-feather-alt"></i>
+                            </div>
+                            <h4 class="card-title mb-0 fw-bold text-dark">Share your story</h4>
+                        </div>
                         <form id="createPostForm">
                             <div class="mb-3">
-                                <label for="postTitle" class="form-label">Title <span
-                                        class="text-danger">*</span></label>
-                                <input type="text" class="form-control" id="postTitle" placeholder="Enter post title"
-                                    required>
+                                <input type="text" class="form-control form-control-lg border-0 bg-light rounded-3 px-3"
+                                    id="postTitle" placeholder="Give it a catchy title..." required>
                             </div>
                             <div class="mb-3">
-                                <label for="postContent" class="form-label">Description <span
-                                        class="text-danger">*</span></label>
-                                <textarea class="form-control" id="postContent" rows="3"
-                                    placeholder="What's on your mind?" required></textarea>
+                                <textarea class="form-control border-0 bg-light rounded-3 px-3 py-3" id="postContent"
+                                    rows="3" placeholder="Tell your story..." required style="resize: none;"></textarea>
                             </div>
-                            <div class="mb-3">
-                                <label for="postImage" class="form-label text-muted">Add Image (optional)</label>
-                                <input class="form-control" type="file" id="postImage" accept="image/*">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="input-group w-auto">
+                                    <input class="form-control form-control-sm border-0 bg-light rounded-pill"
+                                        type="file" id="postImage" accept="image/*" style="max-width: 200px;">
+                                </div>
+                                <button type="submit" class="btn btn-dark rounded-pill px-4">
+                                    <i class="fas fa-paper-plane me-2"></i>Publish
+                                </button>
                             </div>
-                            <button type="submit" class="btn btn-primary">
-                                Post</button>
                         </form>
                     </div>
                 </div>
-            </div>
-        </div>
 
-        <!-- Blog Feed -->
-        <div class="row justify-content-center" id="blogFeed">
-            <!-- Posts will be injected here -->
-            <div class="text-center">
-                <div class="spinner-border text-primary" role="status">
-                    <span class="visually-hidden">Loading...</span>
+                <!-- Blog Feed Header -->
+                <div class="d-flex justify-content-between align-items-center mb-4 border-bottom pb-2">
+                    <h5 class="fw-bold m-0">Latest Stories</h5>
+                    <div class="dropdown">
+                        <button class="btn btn-light btn-sm rounded-pill dropdown-toggle" type="button"
+                            data-bs-toggle="dropdown">
+                            Sort by: Newest
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end border-0 shadow">
+                            <li><a class="dropdown-item" href="#">Newest</a></li>
+                            <li><a class="dropdown-item" href="#">Popular</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Feed -->
+                <div id="blogFeed">
+                    <div class="text-center py-5">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar Column -->
+            <div class="col-lg-4">
+                <div class="sticky-top" style="top: 90px; z-index: 1;">
+
+                    <!-- Search Widget -->
+                    <div class="card border-0 shadow-sm rounded-4 mb-4">
+                        <div class="card-body p-4">
+                            <h5 class="fw-bold mb-3">Search</h5>
+                            <div class="input-group">
+                                <input type="text" class="form-control border-end-0 bg-light border-0"
+                                    placeholder="Search posts...">
+                                <button class="btn btn-light border-start-0 border-0 bg-light" type="button"><i
+                                        class="fas fa-search text-muted"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Categories / Topics -->
+                    <div class="card border-0 shadow-sm rounded-4 mb-4">
+                        <div class="card-body p-4">
+                            <h5 class="fw-bold mb-3">Trending Topics</h5>
+                            <div class="d-flex flex-wrap gap-2">
+                                <span
+                                    class="badge bg-light text-dark border rounded-pill py-2 px-3 fw-normal">Technology</span>
+                                <span
+                                    class="badge bg-light text-dark border rounded-pill py-2 px-3 fw-normal">Design</span>
+                                <span
+                                    class="badge bg-light text-dark border rounded-pill py-2 px-3 fw-normal">Culture</span>
+                                <span
+                                    class="badge bg-light text-dark border rounded-pill py-2 px-3 fw-normal">Politics</span>
+                                <span
+                                    class="badge bg-light text-dark border rounded-pill py-2 px-3 fw-normal">Health</span>
+                                <span
+                                    class="badge bg-light text-dark border rounded-pill py-2 px-3 fw-normal">Science</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modern Newsletter -->
+                    <div class="card border-0 shadow-sm rounded-4 bg-primary text-white">
+                        <div class="card-body p-4 text-center">
+                            <div class="mb-3">
+                                <i class="fas fa-envelope-open-text fa-2x"></i>
+                            </div>
+                            <h5 class="fw-bold mb-2">Nexus Weekly</h5>
+                            <p class="small opacity-75 mb-3">Get the best stories delivered to your inbox every week.
+                            </p>
+                            <input type="email" class="form-control border-0 mb-2 text-center"
+                                placeholder="Your email address">
+                            <button class="btn btn-dark w-100 rounded-pill">Subscribe</button>
+                        </div>
+                    </div>
+
+                    <!-- Footer Links -->
+                    <div class="mt-4 text-center">
+                        <small class="text-muted">
+                            <a href="#" class="text-muted text-decoration-none me-2">Help</a>
+                            <a href="#" class="text-muted text-decoration-none me-2">Status</a>
+                            <a href="#" class="text-muted text-decoration-none me-2">Writers</a>
+                            <a href="#" class="text-muted text-decoration-none me-2">Blog</a>
+                            <a href="#" class="text-muted text-decoration-none">Privacy</a>
+                        </small>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -113,38 +206,51 @@
 
                 posts.forEach((post, index) => {
                     const postElement = document.createElement('div');
-                    postElement.className = 'col-md-8 mb-4';
-
-                    // Cycle colors (Extended Palette)
-                    const colors = [
-                        'border-top-blue', 'border-top-violet', 'border-top-red', 'border-top-orange',
-                        'border-top-yellow', 'border-top-olive', 'border-top-green', 'border-top-grey'
-                    ];
-                    const colorClass = colors[index % colors.length];
+                    postElement.className = 'card border-0 shadow-sm rounded-4 mb-4 overflow-hidden nav-link-hover';
 
                     // Format Date
-                    const date = new Date(post.createdAt).toLocaleDateString();
+                    const date = new Date(post.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+
+                    // Calc Read Time (approx 200 words per min)
+                    const wordCount = post.content.split(/\s+/).length;
+                    const readTime = Math.ceil(wordCount / 200);
 
                     // HTML Structure for Post Card
                     let mediaHtml = '';
                     if (post.mediaUrl) {
-                        mediaHtml = `<img src="${post.mediaUrl}" class="card-img-top" alt="Post Image">`;
+                        mediaHtml = `<div style="height: 240px; overflow: hidden;"><img src="${post.mediaUrl}" class="card-img-top w-100 h-100" alt="Post Image" style="object-fit: cover;"></div>`;
                     }
 
                     postElement.innerHTML = `
-                        <div class="card shadow-sm h-100 ${colorClass}">
-                            ${mediaHtml}
-                            <div class="card-body">
-                                <h5 class="card-title">${post.title}</h5>
-                                <h6 class="card-subtitle mb-2 text-muted">
-                                    By ${post.author.username} on ${date}
-                                </h6>
-                                <p class="card-text">${post.content}</p>
-                                <button class="btn btn-outline-primary btn-sm" onclick="likePost('${post._id}')">
-                                    Likes ${post.likes.length}
-                                </button>
-                                ${post.author._id === user._id || post.author === user._id ?
-                            `<button class="btn btn-outline-danger btn-sm float-end" onclick="deletePost('${post._id}')">Delete</button>` : ''}
+                        ${mediaHtml}
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="avatar-placeholder me-2">
+                                    ${post.author.username.charAt(0).toUpperCase()}
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <h6 class="mb-0 text-dark fw-bold me-2" style="font-size: 14px;">${post.author.username}</h6>
+                                    <span class="text-muted small">&bull; ${date}</span>
+                                </div>
+                            </div>
+                            
+                            <h3 class="card-title fw-bold text-dark mb-2" style="font-family: 'Times New Roman', serif; letter-spacing: -0.5px;">${post.title}</h3>
+                            <p class="card-text text-secondary mb-4" style="font-size: 1.05rem; line-height: 1.6;">${post.content}</p>
+                            
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="d-flex align-items-center gap-3">
+                                    <span class="badge bg-light text-secondary border rounded-pill px-2 py-1 fw-normal" style="font-size: 11px;">Technology</span> 
+                                    <small class="text-muted fw-bold" style="font-size: 12px;">${readTime} min read</small>
+                                </div>
+                                
+                                <div class="d-flex align-items-center gap-2">
+                                    <button class="btn btn-light btn-sm rounded-circle text-muted" title="Bookmark"><i class="far fa-bookmark"></i></button>
+                                    <button class="btn btn-light btn-sm rounded-pill px-3 text-muted ${post.likes.length > 0 ? 'text-danger' : ''}" onclick="likePost('${post._id}')">
+                                        <i class="fas fa-heart me-1"></i> ${post.likes.length}
+                                    </button>
+                                    ${post.author._id === user._id || post.author === user._id ?
+                            `<button class="btn btn-outline-light border-0 btn-sm rounded-circle text-danger" title="Delete" onclick="deletePost('${post._id}')"><i class="fas fa-trash-alt"></i></button>` : ''}
+                                </div>
                             </div>
                         </div>
                     `;

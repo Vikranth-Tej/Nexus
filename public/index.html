@@ -8,6 +8,7 @@
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -23,8 +24,10 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto" id="nav-items">
                     <!-- Nav items will be dynamically updated based on auth status -->
-                    <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
-                    <li class="nav-item"><a class="nav-link" href="register.html">Register</a></li>
+                    <li class="nav-item"><a class="nav-link" href="login.html"><i class="fas fa-sign-in-alt me-1"></i>
+                            Login</a></li>
+                    <li class="nav-item"><a class="nav-link" href="register.html"><i class="fas fa-user-plus me-1"></i>
+                            Register</a></li>
                 </ul>
             </div>
         </div>
@@ -124,6 +127,77 @@
         </div>
     </section>
 
+    <!-- About Section (Merged) -->
+    <section class="container py-5">
+        <!-- Intro Section -->
+        <div class="row justify-content-center mb-5">
+            <div class="col-md-9 text-center">
+                <h1 class="mb-4 display-4 font-weight-bold">About <span class="text-gradient-nexus">Nexus</span></h1>
+                <p class="lead text-muted mb-4">Nexus is an innovative digital ecosystem designed to bridge distances
+                    and foster meaningful connections. We go beyond simple messaging to create a shared space where
+                    communication is seamless, intuitive, and alive. Whether you're collaborating with colleagues or
+                    catching up with friends, Nexus provides the tools to make every interaction count.</p>
+                <hr class="w-25 mx-auto border-secondary">
+            </div>
+        </div>
+
+        <!-- Mission & Vision -->
+        <div class="row mb-5">
+            <div class="col-md-6 mb-4">
+                <div class="card h-100 border-top-violet shadow-sm">
+                    <div class="card-body p-4">
+                        <h3 class="card-title text-primary mb-3">Our Mission</h3>
+                        <p class="card-text">To democratize real-time communication by building a platform that is
+                            accessible, secure, and delightfully simple to use. We strive to empower individuals and
+                            communities to connect without barriers, ensuring that technology serves as a bridge, not a
+                            wall.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="card h-100 border-top-orange shadow-sm">
+                    <div class="card-body p-4">
+                        <h3 class="card-title text-warning mb-3">Our Vision</h3>
+                        <p class="card-text">We envision a world where physical distance is rendered irrelevant by the
+                            power of digital connection. A future where every voice is heard, every story is valued, and
+                            building a community is as natural online as it is offline.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Core Values -->
+        <div class="row mb-5 text-center">
+            <div class="col-12 mb-4">
+                <h3 class="text-gradient-nexus">Our Core Values</h3>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="p-3 border rounded-3 bg-light h-100">
+                    <h5 class="mb-2">Innovation</h5>
+                    <p class="small text-muted mb-0">Pushing boundaries with modern tech.</p>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="p-3 border rounded-3 bg-light h-100">
+                    <h5 class="mb-2">Integrity</h5>
+                    <p class="small text-muted mb-0">Transparent, secure, and honest.</p>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="p-3 border rounded-3 bg-light h-100">
+                    <h5 class="mb-2">Community</h5>
+                    <p class="small text-muted mb-0">Building spaces for everyone.</p>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="p-3 border rounded-3 bg-light h-100">
+                    <h5 class="mb-2">Simplicity</h5>
+                    <p class="small text-muted mb-0">Design that just works.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <!-- Footer -->
     <footer class="bg-dark text-white pt-5 pb-3">
@@ -140,8 +214,7 @@
                     <h5 class="text-uppercase mb-3 text-white">Quick Links</h5>
                     <ul class="list-unstyled">
                         <li><a href="index.html" class="text-white text-decoration-none">Home</a></li>
-                        <li><a href="about.html" class="text-white text-decoration-none">About Us</a></li>
-                        <li><a href="blog.html" class="text-white text-decoration-none">Blog</a></li>
+
                         <li><a href="chat.html" class="text-white text-decoration-none">Chat Rooms</a></li>
                     </ul>
                 </div>
@@ -176,28 +249,26 @@
 
         if (!token) {
             navItems.innerHTML = `
-                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-                <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
-                <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
-                <li class="nav-item"><a class="nav-link" href="register.html">Register</a></li>
+                <li class="nav-item"><a class="nav-link" href="index.html"><i class="fas fa-home me-1"></i> Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="login.html"><i class="fas fa-sign-in-alt me-1"></i> Login</a></li>
+                <li class="nav-item"><a class="nav-link" href="register.html"><i class="fas fa-user-plus me-1"></i> Register</a></li>
             `;
         } else {
             const user = JSON.parse(localStorage.getItem('user'));
             // If logged in, show different nav items
             navItems.innerHTML = `
-                <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-                <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
-                <li class="nav-item"><a class="nav-link" href="chat.html">Chat</a></li>
+                <li class="nav-item"><a class="nav-link active" href="index.html"><i class="fas fa-home me-1"></i> Home</a></li>
+
+                <li class="nav-item"><a class="nav-link" href="blog.html"><i class="fas fa-blog me-1"></i> Blog</a></li>
+                <li class="nav-item"><a class="nav-link" href="chat.html"><i class="fas fa-comments me-1"></i> Chat</a></li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        ${user ? user.username : 'User'}
+                        <i class="fas fa-user-circle me-1"></i> ${user ? user.username : 'User'}
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="profile.html">Profile</a></li>
+                        <li><a class="dropdown-item" href="profile.html"><i class="fas fa-id-card me-2"></i> Profile</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item text-danger" href="#" onclick="logout()">Logout</a></li>
+                        <li><a class="dropdown-item text-danger" href="#" onclick="logout()"><i class="fas fa-sign-out-alt me-2"></i> Logout</a></li>
                     </ul>
                 </li>
             `;
