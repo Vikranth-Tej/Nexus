@@ -1,4 +1,4 @@
-# Nexus - Full Stack Chat & Blog App
+# EL_Chat App - Full Stack Chat & Blog App
 
 A production-ready full-stack application featuring real-time chat, a blog system with media uploads, and JWT authentication. Built with Node.js, Express, MongoDB, and Socket.IO.
 
@@ -67,3 +67,4 @@ A production-ready full-stack application featuring real-time chat, a blog syste
 -   `GET /api/posts`: Get all posts.
 -   `POST /api/posts`: Create post (Multipart form data).
 -   `GET /api/messages/:userId`: Get chat history.
+
